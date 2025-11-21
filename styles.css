@@ -1,0 +1,299 @@
+/* ============================================================
+   GLOBAL
+============================================================ */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Light Theme */
+body.light {
+  background: #e5e7eb;
+  color: #020617;
+}
+
+/* Dark Theme */
+body.dark {
+  background: radial-gradient(circle at top, #1f2937, #020617 60%);
+  color: #e5e7eb;
+}
+
+/* ============================================================
+   CARD
+============================================================ */
+.card {
+  width: 430px;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.45);
+  transition: background 0.5s, transform 0.3s, box-shadow 0.5s, backdrop-filter 0.5s;
+  animation: fadeIn 0.7s ease;
+}
+
+body.dark .card {
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(18px);
+}
+
+body.light .card {
+  background: #ffffff;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 28px 55px rgba(0, 0, 0, 0.55);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* ============================================================
+   TOP BUTTONS
+============================================================ */
+.top-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.toggleBtn {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 0.7rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+}
+
+.toggleBtn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.25);
+}
+
+.unit   { background: #facc15; color: #0f172a; }
+.mode   { background: #34d399; color: #064e3b; }
+.theme  { background: #3b82f6; color: #eff6ff; }
+
+/* ============================================================
+   INPUTS
+============================================================ */
+.label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+input, select {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 0.75rem;
+  border: 1px solid #475569;
+  background: transparent;
+  color: inherit;
+  margin-top: 0.3rem;
+  outline: none;
+}
+
+input:focus, select:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.4);
+}
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+.btn {
+  padding: 0.6rem;
+  margin-top: 0.5rem;
+  background: #38bdf8;
+  border: none;
+  color: #0f172a;
+  width: 100%;
+  border-radius: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(56, 189, 248, 0.4);
+}
+
+.btn-small {
+  width: auto;
+  padding-inline: 1.2rem;
+}
+
+/* ============================================================
+   SECTIONS
+============================================================ */
+.result {
+  margin-top: 1rem;
+  display: none;
+}
+
+.section {
+  margin-top: 1.3rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.section-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.section-subtitle {
+  margin: 0.6rem 0 0.25rem;
+  font-size: 0.95rem;
+}
+
+.city-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+/* ============================================================
+   FORECAST / HOURLY / COMPARE CARDS
+============================================================ */
+.forecast-container,
+.hourly-container,
+.compare-container {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.4rem;
+}
+
+.forecast-card,
+.hour-card,
+.compare-card,
+.alert-card {
+  min-width: 120px;
+  padding: 0.85rem;
+  border-radius: 0.9rem;
+  text-align: center;
+  font-size: 0.85rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: fadeInUp 0.35s ease;
+}
+
+body.dark .forecast-card,
+body.dark .hour-card,
+body.dark .compare-card,
+body.dark .alert-card {
+  background: #111827;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.45);
+}
+
+body.light .forecast-card,
+body.light .hour-card,
+body.light .compare-card,
+body.light .alert-card {
+  background: #e7e7e9;
+  box-shadow: 0 5px 10px rgba(15, 23, 42, 0.15);
+}
+
+.forecast-card:hover,
+.hour-card:hover,
+.compare-card:hover,
+.alert-card:hover {
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   MAP
+============================================================ */
+#map {
+  height: 220px;
+  border-radius: 1rem;
+  margin-top: 0.4rem;
+  overflow: hidden;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.4);
+}
+
+/* ============================================================
+   AQI BADGE
+============================================================ */
+.aqi-badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  margin-left: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* ============================================================
+   OUTFIT BOX
+============================================================ */
+.card-soft {
+  padding: 0.8rem;
+  border-radius: 1rem;
+  margin-top: 0.2rem;
+}
+
+body.dark .card-soft {
+  background: #0f172a;
+}
+
+body.light .card-soft {
+  background: #f3f4f6;
+}
+
+/* ============================================================
+   TEXT HELPERS
+============================================================ */
+.error {
+  color: #ef4444;
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.helper-text {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.muted-text {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* ============================================================
+   ANIMATIONS
+============================================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
