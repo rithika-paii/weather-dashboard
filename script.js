@@ -1,4 +1,4 @@
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://weather-api-z5we.onrender.com";
 
 let currentUnit = "metric";
 let detailedMode = true;
