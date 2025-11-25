@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Weather App Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Leaflet for map -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="dark">
+  <div class="card">
+    <h1>Weather App</h1>
+
+    <!-- Top Toggles -->
+    <div class="top-controls">
+      <button id="unitToggle" class="toggleBtn unit">Switch to °F</button>
+      <button id="modeToggle" class="toggleBtn mode">Detailed Mode</button>
+      <button id="themeToggle" class="toggleBtn theme">Light Mode</button>
+    </div>
+
+    <!-- Search -->
+    <label class="label">City</label>
+    <input id="cityInput" placeholder="Enter city" />
+    <button id="searchBtn" class="btn">Get Weather</button>
+
+    <!-- Recent searches -->
+    <select id="historySelect" class="history-select">
+      <option>Recent Searches</option>
+    </select>
+
+    <div id="error" class="error"></div>
+
+    <!-- === MAIN RESULT === -->
+    <div id="result" class="result">
+
+      <!-- Current Weather -->
+      <div class="section">
+        <h2 class="section-title">Current Weather</h2>
+        <p class="city-title" id="cityName"></p>
+        <p><strong>Temperature:</strong> <span id="temp"></span></p>
+        <p><strong>Condition:</strong> <span id="condition"></span></p>
+        <img id="weatherIcon" width="90" />
+
+        <div id="detailedSection">
+          <p><strong>Feels Like:</strong> <span id="feelsLike"></span></p>
+          <p><strong>Humidity:</strong> <span id="humidity"></span>%</p>
+          <p><strong>Wind:</strong> <span id="wind"></span></p>
+          <p><strong>Sunrise:</strong> <span id="sunrise"></span></p>
+          <p><strong>Sunset:</strong> <span id="sunset"></span></p>
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div class="section">
+        <h2 class="section-title">Map</h2>
+        <div id="map"></div>
+      </div>
+
+      <!-- Forecast -->
+      <div class="section">
+        <h2 class="section-title">Forecast (Next Days)</h2>
+        <div id="forecast" class="forecast-container"></div>
+      </div>
+
+      <!-- Hourly + Chart -->
+      <div class="section">
+        <h2 class="section-title">Hourly (Next 12 hours)</h2>
+        <div id="hourly" class="hourly-container"></div>
+
+        <h3 class="section-subtitle">Hourly Temperature Chart</h3>
+        <canvas id="hourlyChart" height="170"></canvas>
+      </div>
+
+      <!-- Air Quality + UV -->
+      <div class="section">
+        <h2 class="section-title">Air & Sun</h2>
+        <p>
+          <strong>AQI:</strong>
+          <span id="aqiValue"></span>
+          <span id="aqiBadge" class="aqi-badge"></span>
+        </p>
+        <p>
+          <strong>UV Index:</strong>
+          <span id="uv"></span>
+        </p>
+      </div>
+
+      <!-- Weather Alerts -->
+      <div class="section">
+        <h2 class="section-title">Weather Alerts</h2>
+        <div id="alerts" class="alerts-container"></div>
+        <p id="alertsEmpty" class="muted-text"></p>
+      </div>
+
+      <!-- Outfit Recommendation -->
+      <div class="section">
+        <h2 class="section-title">Outfit Recommendation</h2>
+        <div id="outfitBox" class="card-soft"></div>
+      </div>
+
+      <!-- Multi-city Comparison -->
+      <div class="section">
+        <h2 class="section-title">Compare Cities</h2>
+        <p class="helper-text">
+          Enter cities separated by commas (e.g., Boston, Mumbai, London)
+        </p>
+        <input id="compareInput" placeholder="City1, City2, City3..." />
+        <button id="compareBtn" class="btn btn-small">Compare</button>
+        <div id="compareResults" class="compare-container"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
